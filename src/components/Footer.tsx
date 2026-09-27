@@ -3,7 +3,7 @@ import { gym } from "@/lib/data";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-ink pb-24 md:pb-0">
+    <footer className="border-t border-white/10 bg-ink">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div>
           <p className="font-display text-xl font-extrabold">

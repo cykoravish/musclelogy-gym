@@ -7,9 +7,9 @@
   --color-iron-light: #2a2e33;
   --color-chalk: #f3efe7;
   --color-chalk-dim: #c9c5bc;
-  --color-rust: #e1571c;
-  --color-rust-dim: #b84613;
-  --color-hazard: #f0b429;
+  --color-rust: #d99a2b;
+  --color-rust-dim: #b57e1c;
+  --color-hazard: #f2c14e;
 
   --font-display: var(--font-big-shoulders);
   --font-body: var(--font-manrope);

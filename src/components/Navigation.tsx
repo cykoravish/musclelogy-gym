@@ -52,6 +52,15 @@ export default function Navigation() {
     };
   }, [menuOpen]);
 
+  const goToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    history.pushState(null, "", `#${id}`);
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
+  };
+
   return (
     <>
       <header
@@ -135,7 +144,7 @@ export default function Navigation() {
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => goToSection(e, s.id)}
                 className={`group flex items-center justify-between border-b border-white/10 py-2.5 font-display text-3xl font-extrabold transition-all duration-300 sm:py-4 sm:text-4xl ${
                   menuOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
                 } ${active === s.id ? "text-rust" : "text-chalk"}`}

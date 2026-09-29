@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Big_Shoulders, Manrope } from "next/font/google";
-import { gym } from "@/lib/data";
+import { gym, faqs } from "@/lib/data";
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
@@ -16,6 +16,13 @@ const manrope = Manrope({
 });
 
 const siteUrl = "https://musclelogy.vercel.app";
+
+export const viewport: Viewport = {
+  themeColor: "#14161a",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -33,6 +40,19 @@ export const metadata: Metadata = {
     "Musclelogy gym",
     "best gym in Badowala",
   ],
+  applicationName: "Musclelogy Gym",
+  manifest: "/site.webmanifest",
+  authors: [{ name: "Musclelogy Gym" }],
+  category: "Health & Fitness",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
   openGraph: {
     title: "Musclelogy Gym – Badowala, Dehradun",
     description:
@@ -41,6 +61,21 @@ export const metadata: Metadata = {
     siteName: "Musclelogy Gym",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Musclelogy Gym — Badowala, Dehradun",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Musclelogy Gym – Badowala, Dehradun",
+    description:
+      "Genuine pricing, new equipment and real personal training in Badowala, Dehradun.",
+    images: ["/og-image.jpg"],
   },
   alternates: { canonical: siteUrl },
 };
@@ -50,6 +85,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     "@context": "https://schema.org",
     "@type": "ExerciseGym",
     name: gym.name,
+    image: `${siteUrl}/og-image.jpg`,
+    logo: `${siteUrl}/icon-512.png`,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Premnagar Rd, near Blinkit store, Baronwala, Badowala",
@@ -66,6 +103,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     telephone: gym.phoneTel,
     url: siteUrl,
     priceRange: "₹₹",
+    areaServed: {
+      "@type": "City",
+      name: "Dehradun",
+    },
+    hasMap: gym.mapsUrl,
+    sameAs: gym.instagram.map((ig) => ig.url),
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: gym.rating,
@@ -88,6 +131,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     ],
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+
   return (
     <html
       lang="en"
@@ -97,6 +153,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
         {children}
       </body>

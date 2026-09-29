@@ -13,6 +13,7 @@ const sections = [
   { id: "trainer", label: "Trainer" },
   { id: "gallery", label: "Gallery" },
   { id: "reviews", label: "Reviews" },
+  { id: "faq", label: "FAQ" },
   { id: "location", label: "Visit" },
 ];
 

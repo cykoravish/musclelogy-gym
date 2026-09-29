@@ -91,3 +91,31 @@ export const whyUs = [
     body: "Freshly set up gym floor with modern machines, kept in working order.",
   },
 ];
+
+export const faqs = [
+  {
+    question: "How much does Musclelogy Gym membership cost?",
+    answer:
+      "General membership is ₹1,000 a month and covers full access to the gym floor and equipment during all open hours.",
+  },
+  {
+    question: "How much is personal training at Musclelogy?",
+    answer:
+      "Personal training is an additional ₹2,500 a month on top of your membership, and includes a custom plan, form correction and week-to-week progress tracking.",
+  },
+  {
+    question: "What are Musclelogy Gym's timings?",
+    answer:
+      "Open Monday to Saturday, 5:00 AM to 9:30 PM. Closed on Sundays.",
+  },
+  {
+    question: "Is Musclelogy Gym safe and comfortable for women?",
+    answer:
+      "Yes — members specifically mention it's a welcoming, comfortable space for women to train, with nothing to feel nervous about.",
+  },
+  {
+    question: "Where is Musclelogy Gym located?",
+    answer:
+      "On Premnagar Road, near the Blinkit store, in Baronwala, Badowala, Dehradun, Uttarakhand 248007.",
+  },
+];

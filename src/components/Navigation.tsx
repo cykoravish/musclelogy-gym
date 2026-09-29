@@ -107,11 +107,11 @@ export default function Navigation() {
       </header>
 
       <div
-        className={`md:hidden fixed inset-0 z-[60] bg-ink transition-opacity duration-300 ${
+        className={`md:hidden fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-ink transition-opacity duration-300 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex h-full flex-col px-6 pt-6 pb-8">
+        <div className="flex min-h-full flex-col px-6 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))]">
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-2.5">
               <span className="relative h-8 w-8 overflow-hidden rounded-full ring-1 ring-white/15">
@@ -130,13 +130,13 @@ export default function Navigation() {
             </button>
           </div>
 
-          <nav className="mt-14 flex flex-1 flex-col gap-1">
+          <nav className="mt-8 flex flex-col gap-0.5 sm:mt-14">
             {sections.map((s, i) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
                 onClick={() => setMenuOpen(false)}
-                className={`group flex items-center justify-between border-b border-white/10 py-4 font-display text-4xl font-extrabold transition-all duration-300 ${
+                className={`group flex items-center justify-between border-b border-white/10 py-2.5 font-display text-3xl font-extrabold transition-all duration-300 sm:py-4 sm:text-4xl ${
                   menuOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
                 } ${active === s.id ? "text-rust" : "text-chalk"}`}
                 style={{ transitionDelay: menuOpen ? `${i * 40}ms` : "0ms" }}
@@ -149,7 +149,7 @@ export default function Navigation() {
             ))}
           </nav>
 
-          <div className="flex flex-col gap-4">
+          <div className="mt-8 flex flex-col gap-4 sm:mt-auto sm:pt-8">
             <a
               href={gym.whatsapp}
               target="_blank"
@@ -158,7 +158,7 @@ export default function Navigation() {
             >
               WhatsApp us
             </a>
-            <div className="flex items-center justify-center gap-6 text-sm text-chalk-dim">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-chalk-dim">
               <a href={`tel:${gym.phoneTel}`} className="inline-flex items-center gap-2">
                 <Phone size={16} /> Call
               </a>
